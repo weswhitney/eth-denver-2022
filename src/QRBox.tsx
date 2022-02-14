@@ -2,8 +2,11 @@ import * as React from 'react';
 import { Box, ThemeProvider } from '@mui/system'
 import QRCode from "react-qr-code";
 
+
+
 export default function QRBox() {
-  const codeInfo = 'mycolorado://share?Destination=1545&ControlCode=12345&Message=thanks+for+id+with-eth-denver-hack-app&callbackUrl=http://9c2b-2601-282-177f-e050-f518-ebd1-babc-bb95.ngrok.io/hook'
+  const codeInfo = `mycolorado://share?Destination=${process.env.REACT_APP_DESTINATION_ID}&ControlCode=12345&Message=thanks+for+id+with-eth-denver-hack-app&callbackUrl=${process.env.REACT_APP_WEBHOOK_URL}`
+
   return (
     <ThemeProvider
       theme={{
