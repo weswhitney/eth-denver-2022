@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
-import { Box, ThemeProvider } from '@mui/system'
+import { Box } from '@mui/system'
 import QRCode from "react-qr-code";
+import { Button } from '@mui/material';
 
 const getUserInfo = async () => {
-  const response = await fetch(`https://damp-journey-92337.herokuapp.com/url`)
-  const respJson = await response.json();
-  const name = respJson[0];
+  const response = await fetch(`https://damp-journey-92337.herokuapp.com/user-info`)
+  const respJson = response.json();
+  const name = respJson;
 
   return name;
 }
-
 export default function QRBox() {
   const [user, setUser] = useState();
   const codeInfo = `mycolorado://share?Destination=${process.env.REACT_APP_DESTINATION_ID}&Message=thanks+for+id+with-eth-denver-hack-app&callbackUrl=${process.env.REACT_APP_WEBHOOK_URL}`
+  
+  const handleSignOut = async () => {
+    await fetch(`https://damp-journey-92337.herokuapp.com/sign-out`)
+    console.log('signed out')
+    setUser(undefined)
+  }
 
   React.useEffect(() => {
     (async () => {
@@ -22,16 +28,7 @@ export default function QRBox() {
   }, [])
 
   return (
-    <ThemeProvider
-      theme={{
-        palette: {
-          primary: {
-            main: '#007FFF',
-            dark: '#0059B2',
-          },
-        },
-      }}
-    >
+    <>
       <Box
         sx={{
           width: 300,
@@ -57,7 +54,10 @@ export default function QRBox() {
         }}
       >
         <div>hello {user}</div>
+        <Button variant="contained" onClick={() => {
+          handleSignOut();
+        }}>Sign Out</Button>
       </Box>
-    </ThemeProvider>
+    </>
   );
 }
