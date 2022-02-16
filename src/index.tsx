@@ -4,14 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import QRBox from './routes/QRBox';
 import Impact from './routes/Impact';
+import SignIn from './routes/Signin';
 
 ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route index element={<QRBox />} />
+          <Route index element={<SignIn />} />
           <Route path="impact" element={<Impact />} />
           <Route
             path="*"
