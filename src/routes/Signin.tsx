@@ -69,7 +69,7 @@ export default function SignIn() {
         <Grid
           item
           xs={6}
-          sx={{ mt: 6 }}
+          sx={{ mt: 6, pb: 8}}
         >
           <h3>Sign up to receive Colorado Aware notifications.</h3>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
@@ -81,7 +81,7 @@ export default function SignIn() {
         <Grid
           item
           xs={6}
-          sx={{ mt: 6 }}
+          sx={{ mt: 6, pb: 8}}
         >
           {/* <Typography component="h1" variant="h5"> */}
           <h3>Sign up</h3>
