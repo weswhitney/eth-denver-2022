@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import QRBox from './QRBox';
-import { Alert } from '@mui/material';
+import { Alert, Card, CardMedia, Checkbox, FormControlLabel, TextField } from '@mui/material';
 
 function Copyright(props: any) {
   return (
@@ -34,7 +34,7 @@ export default function SignIn() {
     const response = await fetch(`https://damp-journey-92337.herokuapp.com/user-info`)
     const respJson = response.json();
     const name = respJson;
-  
+
     return name;
   }
 
@@ -62,47 +62,81 @@ export default function SignIn() {
   }, [])
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
+    <Container component="main" maxWidth="lg">
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        <Grid
+          item
+          xs={6}
+          sx={{ mt: 6 }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in with myColorado
-          </Typography>
+          <h3>Sign up to receive Colorado Aware notifications.</h3>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            {user ? <div> hello {user} </div> : <QRBox />}
-            <Alert severity="info">Use your smartphone to scan the QR code from your myColorado app. Refresh this page after confirming</Alert>
+            <Typography variant="body1">
+              In times of stress on the power grid, you will get a message notifying you when to conserve electricity.
+            </Typography>
+          </Box>
+        </Grid>
+        <Grid
+          item
+          xs={6}
+          sx={{ mt: 6 }}
+        >
+          {/* <Typography component="h1" variant="h5"> */}
+          <h3>Sign up</h3>
+          {/* </Typography> */}
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="I agree to receive email messages related to the Flex Alert program."
+            />
             <Button
+              type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              onClick={() => {
-                handleSignOut();
-              }}
             >
-              Sign Out
+              Sign In
             </Button>
             <Grid container>
               <Grid item>
                 <Link href="https://mycolorado.state.co.us/home" variant="body2" target="blank">
-                  {"Don't have an myColorado account? Sign Up"}
+                  {"Already subscribed? Sign In"}
                 </Link>
               </Grid>
             </Grid>
           </Box>
+        </Grid>
+        <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+          <Card sx={{ maxWidth: 88, boxShadow: 0 }} raised={false} >
+            <CardMedia
+              component="img"
+              image="https://dcs.colorado.gov/sites/dcs/files/styles/image_card/public/CO_Primary_rgb_0.png"
+            />
+          </Card>
+          <h3>Colorado Aware</h3>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
-      </Container>
-    </ThemeProvider>
+      </Grid>
+      <Copyright sx={{ mt: 8, mb: 4 }} />
+    </Container>
   );
 }
