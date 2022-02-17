@@ -11,6 +11,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import QRBox from './QRBox';
 import { Alert, Card, CardMedia, Checkbox, FormControlLabel, TextField } from '@mui/material';
+import Footer from '../Footer';
 
 function Copyright(props: any) {
   return (
@@ -62,6 +63,7 @@ export default function SignIn() {
   }, [])
 
   return (
+    <>
     <Container component="main" maxWidth="lg">
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid
@@ -136,7 +138,9 @@ export default function SignIn() {
           <h3>Colorado Aware</h3>
         </Box>
       </Grid>
-      <Copyright sx={{ mt: 8, mb: 4 }} />
+      {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
     </Container>
+    <Footer />
+    </>
   );
 }
