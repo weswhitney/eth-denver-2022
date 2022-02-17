@@ -6,7 +6,7 @@ import { Link, Outlet } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-      <h1>Flex Alert</h1>
+      <h1>Colorado Aware</h1>
       <nav
         style={{
           borderBottom: "solid 1px",
