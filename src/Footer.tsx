@@ -11,7 +11,7 @@ function Copyright() {
     <Typography variant="body2" color="text.secondary">
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Energenics
+        Blockchain Energy Systems
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
