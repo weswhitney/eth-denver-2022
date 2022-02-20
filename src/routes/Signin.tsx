@@ -10,6 +10,7 @@ import QRBox from './QRBox';
 import { Alert, ButtonGroup, Card, CardMedia, Checkbox, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControlLabel, IconButton, TextField } from '@mui/material';
 import Footer from '../Footer';
 import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalanceWalletOutlined';
+import KeyOutlinedIcon from '@mui/icons-material/KeyOutlined';
 
 const theme = createTheme();
 
@@ -17,6 +18,7 @@ export default function SignIn() {
   const [user, setUser] = React.useState();
   const [formType, setFormType] = React.useState('email');
   const [open, setOpen] = React.useState(false);
+  const [openDid, setOpenDid] = React.useState(false)
 
   const handleEmailClick = () => {
     setFormType('email')
@@ -25,6 +27,14 @@ export default function SignIn() {
   const handleMobileClick = () => {
     setFormType('mobile')
   }
+
+  const handleClickDidOpen = () => {
+    setOpenDid(true);
+  };
+
+  const handleClickDidClose = () => {
+    setOpenDid(false);
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -70,10 +80,12 @@ export default function SignIn() {
           <Grid item>
             <h1>Colorado Aware</h1>
           </Grid>
-          <Grid item xs={7}>
-            <Box></Box>
+          <Grid item xs={6}>
           </Grid>
           <Grid item>
+            <Box>
+              <Button onClick={handleClickDidOpen}>Secure with did</Button>
+            </Box>
             <IconButton
               aria-label="wallet"
               onClick={handleClickOpen}
@@ -216,6 +228,24 @@ export default function SignIn() {
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
           </DialogActions>
+        </Dialog>
+        <Dialog open={openDid} onClose={handleClickDidClose}>
+          <Box sx={{textAlign: 'center'}}>
+            <KeyOutlinedIcon fontSize="large" />
+          </Box>
+          <DialogTitle sx={{textAlign: 'center'}}>Digital Identity</DialogTitle>
+          <DialogContent>
+            <Box component="form" noValidate sx={{ mt: 1, textAlign: 'center' }}>
+              <Grid container>
+                <Grid item>
+                  <Typography>
+                    To protect your privacy your data is encrypted with your personal key
+                  </Typography>
+                  <Alert severity="info">did:ewc:0xFF556Beb6d00d5a2B80ff41F85717A37761f2275</Alert>
+                </Grid>
+              </Grid>
+            </Box>
+          </DialogContent>
         </Dialog>
       </div>
       <Footer />
