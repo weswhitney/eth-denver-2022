@@ -6,9 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Impact from './routes/Impact';
 import SignIn from './routes/Signin';
+import { CssBaseline } from '@mui/material';
 
 ReactDOM.render(
-    <BrowserRouter>
+  <React.Fragment>
+      <CssBaseline />
+      <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<SignIn />} />
@@ -23,7 +26,8 @@ ReactDOM.render(
           />
         </Route>
       </Routes>
-    </BrowserRouter>,
+    </BrowserRouter>
+  </React.Fragment>,
   document.getElementById('root')
 );
 
