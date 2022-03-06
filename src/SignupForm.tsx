@@ -1,3 +1,4 @@
+import React from "react"
 import {
   Grid,
   ButtonGroup,
@@ -6,16 +7,20 @@ import {
   Typography,
   FormControlLabel,
   Checkbox,
-} from "@mui/material";
-import { Box } from "@mui/system";
-import React from "react";
+} from "@mui/material"
+import { Box } from "@mui/system"
 
-const SignupForm = (Props: {
-  handleEmailClick: () => void;
-  handleMobileClick: () => void;
-  formType: any;
-  setFormType: any;
-}) => {
+interface SignupFormProps {
+  handleEmailClick: () => void
+  handleMobileClick: () => void
+  formType: string
+}
+
+const SignupForm = ({
+  handleEmailClick,
+  handleMobileClick,
+  formType,
+}: SignupFormProps) => {
   return (
     <Grid item xs={6} sx={{ mt: 6, pb: 8 }}>
       <h3>Sign up</h3>
@@ -23,22 +28,22 @@ const SignupForm = (Props: {
         <ButtonGroup disableElevation variant="contained">
           <Button
             onClick={() => {
-              Props.handleEmailClick();
+              handleEmailClick()
             }}
-            variant={Props.formType === "mobile" ? "outlined" : undefined}
+            variant={formType === "mobile" ? "outlined" : undefined}
           >
             Email
           </Button>
           <Button
             onClick={() => {
-              Props.handleMobileClick();
+              handleMobileClick()
             }}
-            variant={Props.formType === "mobile" ? undefined : "outlined"}
+            variant={formType === "mobile" ? undefined : "outlined"}
           >
             SMS
           </Button>
         </ButtonGroup>
-        {Props.formType === "email" ? (
+        {formType === "email" ? (
           <TextField
             margin="normal"
             required
@@ -70,7 +75,7 @@ const SignupForm = (Props: {
             </Typography>
           </>
         )}
-        {Props.formType === "email" ? (
+        {formType === "email" ? (
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="I agree to receive email messages related to the Flex Alert program."
@@ -91,7 +96,7 @@ const SignupForm = (Props: {
         </Button>
       </Box>
     </Grid>
-  );
-};
+  )
+}
 
-export default SignupForm;
+export default SignupForm

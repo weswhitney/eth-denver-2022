@@ -33,18 +33,13 @@ export default function SignIn() {
   return (
     <>
       <Container component="main" maxWidth="lg">
-        <Header
-          handleClickDidOpen={handleClickDidOpen}
-          openDid={openDid}
-          setOpenDid={setOpenDid}
-        />
+        <Header handleClickDidOpen={handleClickDidOpen} />
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           <InfoBox />
           <SignupForm
             handleEmailClick={handleEmailClick}
             handleMobileClick={handleMobileClick}
             formType={formType}
-            setFormType={setFormType}
           />
         </Grid>
       </Container>

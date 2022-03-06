@@ -1,11 +1,11 @@
 import { Grid, Card, CardMedia, Button } from "@mui/material"
 import { Box } from "@mui/system"
 
-const Header = (Props: {
-  handleClickDidOpen: any
-  openDid: any
-  setOpenDid: any
-}) => {
+interface HeaderProps {
+  handleClickDidOpen: () => void
+}
+
+const Header = ({ handleClickDidOpen }: HeaderProps) => {
   return (
     <Grid container>
       <Grid item xs={1}>
@@ -22,7 +22,7 @@ const Header = (Props: {
       <Grid item xs={6}></Grid>
       <Grid item>
         <Box>
-          <Button onClick={Props.handleClickDidOpen}>Secure with did</Button>
+          <Button onClick={handleClickDidOpen}>Secure with did</Button>
         </Box>
       </Grid>
     </Grid>
